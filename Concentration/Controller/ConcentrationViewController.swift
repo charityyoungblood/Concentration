@@ -18,6 +18,11 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         print("the card is being touched")
     }
     
+    // func flipCard(the image you want to display on the card: String, on Button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
+    // this function should check to see if there is an image on the card currently
+        // if there is an image, it should "turn the card over" and display the back of the card (solid color)
+        // if there is not currently an image showing, it should "turn the card over" and display the image side of the card 
+        //}
     
     override func viewDidLoad() {
         super.viewDidLoad()
