@@ -54,14 +54,38 @@
 		9EC499FB203C94FE00B65987 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				9EC49A10203C9CBC00B65987 /* Controller */,
+				9EC49A0F203C9CB500B65987 /* View */,
+				9EC49A0E203C9CAD00B65987 /* Model */,
 				9EC499FC203C94FE00B65987 /* AppDelegate.swift */,
-				9EC499FE203C94FE00B65987 /* ConcentrationViewController.swift */,
-				9EC49A00203C94FE00B65987 /* Main.storyboard */,
-				9EC49A03203C94FE00B65987 /* Assets.xcassets */,
 				9EC49A05203C94FE00B65987 /* LaunchScreen.storyboard */,
 				9EC49A08203C94FE00B65987 /* Info.plist */,
 			);
 			path = Concentration;
+			sourceTree = "<group>";
+		};
+		9EC49A0E203C9CAD00B65987 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9EC49A0F203C9CB500B65987 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9EC49A00203C94FE00B65987 /* Main.storyboard */,
+				9EC49A03203C94FE00B65987 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9EC49A10203C9CBC00B65987 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9EC499FE203C94FE00B65987 /* ConcentrationViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

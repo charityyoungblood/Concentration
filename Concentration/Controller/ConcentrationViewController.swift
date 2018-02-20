@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ConcentrationViewController: UIViewController {
+class ConcentrationViewController: UIViewController { //UIViewController is the superclass of ConcentrationViewController - REMEMEBER the superclass is the "main" class that other classes inherit from
+    // the class UIViewController is in UIKit - and knows everything about controlling the UI of the application
 
     override func viewDidLoad() {
         super.viewDidLoad()
