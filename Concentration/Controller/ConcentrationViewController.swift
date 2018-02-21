@@ -18,6 +18,11 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         flipCard(buttonImage: "Microphone.png", on: sender)
     }
     
+    @IBAction func touchSecondCard(_ sender: UIButton) {
+        flipCard(buttonImage: "Microphone.png", on: sender)
+    }
+    
+    
     //let image = #imageLiteral(resourceName: "Microphone")
     
      func flipCard(buttonImage: String, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
@@ -27,11 +32,12 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // ***NOTE ON DOCUMENTATION: when you see a description that reads static var highlighted: UIControlState, you'll place it in the code as nameOfClass.nameOfProperty
         // Ex: button.setTitle("", UIControlState.highlighted)
         if button.currentImage == UIImage(named: "Microphone.png") {
-            print("the image is a mic")
+            button.setImage(nil, for: UIControlState.normal) // change to display no image
+            button.backgroundColor = #colorLiteral(red: 0.1989284158, green: 0.5619404316, blue: 0.5522626042, alpha: 1)
         }
         
         else { // set button background color to the "back of card" color
-           print("the background color is teal")
+           button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
     
