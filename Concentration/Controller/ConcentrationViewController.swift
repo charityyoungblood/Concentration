@@ -15,14 +15,25 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
         
-        print("the card is being touched")
+        flipCard(buttonImage: "Microphone.png", on: sender)
     }
     
-    // func flipCard(the image you want to display on the card: String, on Button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
+    //let image = #imageLiteral(resourceName: "Microphone")
+    
+     func flipCard(buttonImage: String, on Button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
     // this function should check to see if there is an image on the card currently
         // if there is an image, it should "turn the card over" and display the back of the card (solid color)
-        // if there is not currently an image showing, it should "turn the card over" and display the image side of the card 
-        //}
+        // if there is not currently an image showing, it should "turn the card over" and display the image side of the card
+        // ***NOTE ON DOCUMENTATION: when you see a description that reads static var highlighted: UIControlState, you'll place it in the code as nameOfClass.nameOfProperty
+        // Ex: button.setTitle("", UIControlState.highlighted)
+        if Button.currentImage == UIImage(named: "Microphone.png") {
+            print("the image is a mic")
+        }
+        
+        else { // set button background color to the "back of card" color
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
