@@ -33,11 +33,12 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // Ex: button.setTitle("", UIControlState.highlighted)
         if button.currentImage == UIImage(named: "Microphone.png") {
             button.setImage(nil, for: UIControlState.normal) // change to display no image
-            button.backgroundColor = #colorLiteral(red: 0.1989284158, green: 0.5619404316, blue: 0.5522626042, alpha: 1)
+            button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
         }
         
         else { // set button background color to the "back of card" color
-           button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            button.setImage(UIImage(named: "Microphone.png"), for: UIControlState.normal) // change to display no image
+            button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
     
