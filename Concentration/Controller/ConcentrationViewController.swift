@@ -19,7 +19,7 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     }
     
     @IBAction func touchSecondCard(_ sender: UIButton) {
-        flipCard(buttonImage: "Microphone.png", on: sender)
+        flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images 
     }
     
     
