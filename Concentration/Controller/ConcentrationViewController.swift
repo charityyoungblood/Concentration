@@ -45,20 +45,24 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // if there is not currently an image showing, it should "turn the card over" and display the image side of the card
         // ***NOTE ON DOCUMENTATION: when you see a description that reads static var highlighted: UIControlState, you'll place it in the code as nameOfClass.nameOfProperty
         // Ex: button.setTitle("", UIControlState.highlighted)
-        if button.currentImage == UIImage(named: "Microphone.png") {
-            button.setImage(nil, for: UIControlState.normal) // change to display no image
-            button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
+        button.setImage(nil, for: UIControlState.normal)
+        if button.currentImage == nil {
+            button.setImage(UIImage(named: "Microphone.png"), for: UIControlState.normal)
         }
         
         else { // set button background color to the "back of card" color
-            button.setImage(UIImage(named: "Microphone.png"), for: UIControlState.normal) // change to display no image
+            
             button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+//        let button = UIButton() // trying to change the button background color to teal upon loading 
+//        changeBackgroundColor(on: button)
+//        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
