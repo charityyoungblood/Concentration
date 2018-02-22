@@ -131,6 +131,7 @@
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="TMK-B8-w31" id="CCz-vp-DLU"/>
+                        <outletCollection property="cardButtons" destination="jL9-YW-BjS" collectionClass="NSMutableArray" id="lrv-TK-pjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

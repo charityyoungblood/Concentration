@@ -24,6 +24,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
 
     @IBOutlet weak var flipCountLabel: UILabel!
     
+    @IBOutlet var cardButtons: [UIButton]! // this is an array of UIButtons
+    
     @IBAction func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
