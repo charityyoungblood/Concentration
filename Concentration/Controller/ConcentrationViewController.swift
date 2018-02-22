@@ -28,31 +28,33 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
         flipCount += 1
-        flipCard(buttonImage: "Microphone.png", on: sender)
+        flipCard(buttonImage: UIImage(named: "Microphone.png")!, on: sender)
     }
     
-    @IBAction func touchSecondCard(_ sender: UIButton) {
-        flipCount += 1 // each time a card is touched, we will increase the flipCount by 1
-        flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images 
-    }
+// **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
+// To do this effectively, we need to create an array (a collection) of all the cards
     
+            // @IBAction func touchSecondCard(_ sender: UIButton) {
+                //  flipCount += 1 // each time a card is touched, we will increase the flipCount by 1
+                //  flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images
+                //    }
     
-    //let image = #imageLiteral(resourceName: "Microphone")
-    
-     func flipCard(buttonImage: String, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
+     func flipCard(buttonImage: UIImage, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
     // this function should check to see if there is an image on the card currently
-        // if there is an image, it should "turn the card over" and display the back of the card (solid color)
+        // if there is an image, it should "turn the card over" and display the front of the card (solid color)
         // if there is not currently an image showing, it should "turn the card over" and display the image side of the card
         // ***NOTE ON DOCUMENTATION: when you see a description that reads static var highlighted: UIControlState, you'll place it in the code as nameOfClass.nameOfProperty
         // Ex: button.setTitle("", UIControlState.highlighted)
      
         // button.setImage(nil, for: UIControlState.normal)
-        if button.currentImage == UIImage(named: "Microphone.png") {
+// **Once we create the array, you can pull the index number and use to display the image (for the if statement below)**
+        
+        if button.currentImage == UIImage(named: "Microphone.png") { // this checks the current image on the card. If there IS an image it changes it's button background to the "front - solid color" side of the card
             button.setImage(nil, for: UIControlState.normal)
              button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
         }
         
-        else { // set button background color to the "back of card" color
+        else { // this sets the button background color to the "image side" color
             button.setImage(UIImage(named: "Microphone.png"), for: UIControlState.normal)
             button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
