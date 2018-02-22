@@ -14,7 +14,11 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     // To keep track of the amount of times each card has been flipped over, we wil create an instance variable to track
     // ***REMEMBER: ALL variables and properties have to be INITIALIZED in Swift, i.e. it has to be assigned to some value***
     
-    var flipCount = 0
+    var flipCount = 0 {
+        didSet {
+            flipCountLabel.text = "Flips: \(flipCount)"
+        }
+    }
     
     // to show the user the flipCount - we have to add it to our UI with a text field or a label
 
@@ -24,13 +28,11 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
         flipCount += 1
-        flipCountLabel.text = "Flips: \(flipCount)"
         flipCard(buttonImage: "Microphone.png", on: sender)
     }
     
     @IBAction func touchSecondCard(_ sender: UIButton) {
         flipCount += 1 // each time a card is touched, we will increase the flipCount by 1
-        flipCountLabel.text = "Flips: \(flipCount)"
         flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images 
     }
     
