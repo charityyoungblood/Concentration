@@ -10,15 +10,23 @@ import UIKit
 
 class ConcentrationViewController: UIViewController { //UIViewController is the superclass of ConcentrationViewController - REMEMEBER the superclass is the "main" class that other classes inherit from
     // the class UIViewController is in UIKit - and knows everything about controlling the UI of the application - since our ConcentrationViewController "inherits" everything from the UIViewController superclass, it now has access to everything the UIViewController has access to
+    
+    // To keep track of the amount of times each card has been flipped over, we wil create an instance variable to track
+    // ***REMEMBER: ALL variables and properties have to be INITIALIZED in Swift, i.e. it has to be assigned to some value***
+    
+    var flipCount = 0
+    
+    // to show the user the flipCount - we have to add it to our UI with a text field or a label
 
     @IBAction func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
-        
+        flipCount += 1
         flipCard(buttonImage: "Microphone.png", on: sender)
     }
     
     @IBAction func touchSecondCard(_ sender: UIButton) {
+        flipCount += 1 // each time a card is touched, we will increase the flipCount by 1
         flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images 
     }
     
