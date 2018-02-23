@@ -61,7 +61,7 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
 // **Once we create the array, you can pull the index number and use to display the image (for the if statement below)**
         let cardImage = cardButtons.index(of: button)
         
-        if button.currentImage == buttonImage { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
+        if (button.currentImage != nil) { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
             button.setImage(nil, for: UIControlState.normal)
              button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
         }
