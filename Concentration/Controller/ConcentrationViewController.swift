@@ -25,12 +25,15 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBOutlet var cardButtons: [UIButton]! // this is an array of UIButtons
+    // We will need to look into the array above and locate which card has been touched
     
     @IBAction func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
         flipCount += 1
-        flipCard(buttonImage: UIImage(named: "Microphone.png")!, on: sender)
+        let cardNumber = cardButtons.index(of: sender) // this looks into the cardButtons array > checks the index and stores that index in the cardNumber variable
+        print("Card number: \(cardNumber)")
+        //flipCard(buttonImage: UIImage(named: "Microphone.png")!, on: sender)
     }
     
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
