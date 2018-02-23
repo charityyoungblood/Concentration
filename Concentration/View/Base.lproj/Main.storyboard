@@ -132,6 +132,13 @@
                     <connections>
                         <outlet property="flipCountLabel" destination="TMK-B8-w31" id="CCz-vp-DLU"/>
                         <outletCollection property="cardButtons" destination="jL9-YW-BjS" collectionClass="NSMutableArray" id="lrv-TK-pjZ"/>
+                        <outletCollection property="cardButtons" destination="0m3-em-AHh" collectionClass="NSMutableArray" id="Zdy-pY-67f"/>
+                        <outletCollection property="cardButtons" destination="tjH-b8-UH3" collectionClass="NSMutableArray" id="gTF-y3-H6N"/>
+                        <outletCollection property="cardButtons" destination="P6L-gV-0Ky" collectionClass="NSMutableArray" id="73h-ZU-zzc"/>
+                        <outletCollection property="cardButtons" destination="5co-ca-oGG" collectionClass="NSMutableArray" id="8Ok-XA-7Ua"/>
+                        <outletCollection property="cardButtons" destination="gGW-MM-y8U" collectionClass="NSMutableArray" id="hA5-ff-ldn"/>
+                        <outletCollection property="cardButtons" destination="MFq-ER-5cp" collectionClass="NSMutableArray" id="LlV-aC-kRE"/>
+                        <outletCollection property="cardButtons" destination="EgV-S8-W7m" collectionClass="NSMutableArray" id="YWk-b0-ovt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
