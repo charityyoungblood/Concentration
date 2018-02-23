@@ -50,7 +50,7 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
                 //  flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images
                 //    }
     
-     func flipCard(buttonImage: UIImage, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
+     func flipCard(withImage buttonImage: UIImage, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
     // this function should check to see if there is an image on the card currently
         // if there is an image, it should "turn the card over" and display the front of the card (solid color)
         // if there is not currently an image showing, it should "turn the card over" and display the image side of the card
@@ -60,7 +60,9 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // button.setImage(nil, for: UIControlState.normal)
 // **Once we create the array, you can pull the index number and use to display the image (for the if statement below)**
         
-        if button.currentImage == UIImage(named: "Microphone.png") { // this checks the current image on the card. If there IS an image it changes it's button background to the "front - solid color" side of the card
+        // if the current image of the button is included in cardImageChoices array && is showing then run code below
+        let image = button.currentImage // storing the current image displayed on the button into a constant "image"
+        if cardImageChoices.contains(image!) { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
             button.setImage(nil, for: UIControlState.normal)
              button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
         }
