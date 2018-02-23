@@ -34,7 +34,7 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // external name: the name callers use
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) { // this looks into the cardButtons array > "if" the optional (index?) is in the set state > cardNumber finds an index of the cardButtons array, it will run the code below
-                print("Card number: \(cardNumber)")
+                flipCard(withImage: cardImageChoices[cardNumber], on: sender)
         }
         else {
             print("chosen card was not in cardButtons")
@@ -59,16 +59,15 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
      
         // button.setImage(nil, for: UIControlState.normal)
 // **Once we create the array, you can pull the index number and use to display the image (for the if statement below)**
+        let cardImage = cardButtons.index(of: button)
         
-        // if the current image of the button is included in cardImageChoices array && is showing then run code below
-        let image = button.currentImage // storing the current image displayed on the button into a constant "image"
-        if cardImageChoices.contains(image!) { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
+        if button.currentImage == buttonImage { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
             button.setImage(nil, for: UIControlState.normal)
              button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
         }
         
         else { // this sets the button background color to the "image side" color
-            button.setImage(UIImage(named: "Microphone.png"), for: UIControlState.normal)
+            button.setImage(cardImageChoices[cardImage!], for: UIControlState.normal)
             button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
