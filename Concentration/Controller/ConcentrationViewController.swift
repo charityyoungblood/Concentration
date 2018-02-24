@@ -14,6 +14,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     // To keep track of the amount of times each card has been flipped over, we wil create an instance variable to track
     // ***REMEMBER: ALL variables and properties have to be INITIALIZED in Swift, i.e. it has to be assigned to some value***
     
+    var game = ConcentrationDataModel() // this is an instance variable of the ConcentrationDataModel class
+    
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
