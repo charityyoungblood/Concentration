@@ -20,4 +20,10 @@ class ConcentrationDataModel {
     func chooseCard(at index: Int) {
         
     }
+    
+    init(numberOfPairsOfCards: Int) { // this is what we need to create our game - the number of pairs of cards will be fed to the ConcentrationDataModel
+        
+        let card = Card(identifier: identifier)
+        
+    }
 }

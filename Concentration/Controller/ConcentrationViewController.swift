@@ -16,6 +16,9 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     
     var game = ConcentrationDataModel() // this is an instance variable of the ConcentrationDataModel class
     
+    // When we create our Concentration game, we have to say how many cards there are
+    
+    
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
