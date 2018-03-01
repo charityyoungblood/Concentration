@@ -39,7 +39,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // external name: the name callers use
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) { // this looks into the cardButtons array > "if" the optional (index?) is in the set state > cardNumber finds an index of the cardButtons array, it will run the code below
-                flipCard(withImage: cardImageChoices[cardNumber], on: sender)
+                game.chooseCard(at: cardNumber)
+                updateViewFromModel()
         }
         else {
             print("chosen card was not in cardButtons")
@@ -47,6 +48,25 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         //flipCard(buttonImage: UIImage(named: "Microphone.png")!, on: sender)
     }
     
+    func updateViewFromModel() {// this function will look at all of our cards in the cards variable (from ConcentrationDataModel) and make sure all of our cardButtons match
+    // this function needs to look up the "index" value IN the card array so we can tell which card it is
+        
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            if card.isFaceUp {
+                button.setImage(nil, for: UIControlState.normal)
+                button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
+            }
+            
+            else {
+                let cardImage = cardButtons.index(of: button)
+                button.setImage(cardImageChoices[cardImage!], for: UIControlState.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.482870698, green: 0.6930291057, blue: 0.7390365005, alpha: 1)
+            }
+        }
+        
+    }
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
 // To do this effectively, we need to create an array (a collection) of all the cards
     
@@ -55,28 +75,28 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
                 //  flipCard(buttonImage: "Microphone.png", on: sender) // this is the card on the left - you need to add more images
                 //    }
     
-     func flipCard(withImage buttonImage: UIImage, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
-    // this function should check to see if there is an image on the card currently
-        // if there is an image, it should "turn the card over" and display the front of the card (solid color)
-        // if there is not currently an image showing, it should "turn the card over" and display the image side of the card
-        // ***NOTE ON DOCUMENTATION: when you see a description that reads static var highlighted: UIControlState, you'll place it in the code as nameOfClass.nameOfProperty
-        // Ex: button.setTitle("", UIControlState.highlighted)
-     
-        // button.setImage(nil, for: UIControlState.normal)
+//     func flipCard(withImage buttonImage: UIImage, on button: UIButton) { // ***REMEMBER: when picking function argument names, they should read like English***
+//    // this function should check to see if there is an image on the card currently
+//        // if there is an image, it should "turn the card over" and display the front of the card (solid color)
+//        // if there is not currently an image showing, it should "turn the card over" and display the image side of the card
+//        // ***NOTE ON DOCUMENTATION: when you see a description that reads static var highlighted: UIControlState, you'll place it in the code as nameOfClass.nameOfProperty
+//        // Ex: button.setTitle("", UIControlState.highlighted)
+//
+//        // button.setImage(nil, for: UIControlState.normal)
 // **Once we create the array, you can pull the index number and use to display the image (for the if statement below)**
-        let cardImage = cardButtons.index(of: button)
-        
-        if (button.currentImage != nil) { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
-            button.setImage(nil, for: UIControlState.normal)
-             button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
-        }
-        
-        else { // this sets the button background color to the "image side" color
-            button.setImage(cardImageChoices[cardImage!], for: UIControlState.normal)
-            button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        }
-    }
-    
+//        let cardImage = cardButtons.index(of: button)
+//
+//        if (button.currentImage != nil) { // this checks the current image on the card. If the array of cardImageChoices contains the current button image, it's button background to the "front - solid color" side of the card
+//            button.setImage(nil, for: UIControlState.normal)
+//             button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
+//        }
+//
+//        else { // this sets the button background color to the "image side" color
+//            button.setImage(cardImageChoices[cardImage!], for: UIControlState.normal)
+//            button.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+//        }
+//    }
+//
     
     override func viewDidLoad() {
         super.viewDidLoad()
