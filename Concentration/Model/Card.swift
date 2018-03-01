@@ -21,6 +21,9 @@ struct Card {
     static func getUniqueIdentifier() -> Int { // this function returns an Int that is unique, i.e. changes every time it is called
         Card.identifierFactory += 1
         return Card.identifierFactory
+        // Since you are in the "static func", which is referring to the "Card" you can also use the following syntax:
+            // identifierFactory +=1
+            // return identifierFactory
     }
         
     init(identifier: Int) {

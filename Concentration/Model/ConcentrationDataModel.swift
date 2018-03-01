@@ -29,5 +29,6 @@ class ConcentrationDataModel {
         cards.append(matchingCard)
     // instead of append you could use cards += [card, card]
         }
+        // **TODO: Shuffle the cards** 
     }
 }
