@@ -22,8 +22,12 @@ class ConcentrationDataModel {
     }
     
     init(numberOfPairsOfCards: Int) { // this is what we need to create our game - the number of pairs of cards will be fed to the ConcentrationDataModel
-        
+        for identifier in 1..<numberOfPairsOfCards {
         let card = Card(identifier: identifier)
-        
+        let matchingCard = card
+        cards.append(card)
+        cards.append(matchingCard)
+    // instead of append you could use cards += [card, card]
+        }
     }
 }
