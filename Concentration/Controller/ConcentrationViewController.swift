@@ -32,8 +32,6 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     @IBOutlet var cardButtons: [UIButton]! // this is an array of UIButtons
     // We will need to look into the array above and locate which card has been touched
     
-    var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone")]
-    
     @IBAction func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
@@ -51,22 +49,29 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     func updateViewFromModel() {// this function will look at all of our cards in the cards variable (from ConcentrationDataModel) and make sure all of our cardButtons match
     // this function needs to look up the "index" value IN the card array so we can tell which card it is
         
+        
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
-            if card.isFaceUp {
-                button.setImage(nil, for: UIControlState.normal)
+            if card.isFaceUp { // this is where we set .isFaceUp to "do something"
+                button.setImage(cardImage(for: card), for: UIControlState.normal)
                 button.backgroundColor = #colorLiteral(red: 0.4816493988, green: 0.6940720677, blue: 0.7372941375, alpha: 1)
             }
             
             else {
-                let cardImage = cardButtons.index(of: button)
-                button.setImage(cardImageChoices[cardImage!], for: UIControlState.normal)
+    
+                button.setImage(nil, for: UIControlState.normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.482870698, green: 0.6930291057, blue: 0.7390365005, alpha: 1)
             }
         }
-        
     }
+    
+    var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone")] //need to change these to different images -- add in assets folder
+    
+    func cardImage(for card: Card) -> UIImage {
+        return #imageLiteral(resourceName: "Microphone")
+    }
+    
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
 // To do this effectively, we need to create an array (a collection) of all the cards
     

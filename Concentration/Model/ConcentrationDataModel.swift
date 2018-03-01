@@ -18,11 +18,18 @@ class ConcentrationDataModel {
     var cards = [Card]() // we have to define Card - to do this we need to create a struct 
     
     func chooseCard(at index: Int) {
+        if cards[index].isFaceUp {
+            cards[index].isFaceUp = false
+        }
+        
+        else {
+            cards[index].isFaceUp = true
+        }
         
     }
     
     init(numberOfPairsOfCards: Int) { // this is what we need to create our game - the number of pairs of cards will be fed to the ConcentrationDataModel
-        for identifier in 1..<numberOfPairsOfCards {
+        for identifier in 1...numberOfPairsOfCards {
         let card = Card(identifier: identifier)
         let matchingCard = card
         cards.append(card)
