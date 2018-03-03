@@ -49,8 +49,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     func updateViewFromModel() {// this function will look at all of our cards in the cards variable (from ConcentrationDataModel) and make sure all of our cardButtons match
     // this function needs to look up the "index" value IN the card array so we can tell which card it is
         
-        
-        for index in cardButtons.indices {
+        // When we invoke the function of chooseCard - the game wil change - in this case, we'll need to update our View from the model 
+        for index in cardButtons.indices { // since we want to look up the card index, specifically, we go through the cardButton array by index - using the .indices method
             let button = cardButtons[index]
             let card = game.cards[index]
             if card.isFaceUp { // this is where we set .isFaceUp to "do something"
