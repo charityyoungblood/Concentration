@@ -92,7 +92,7 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     }
         // another way to write our if/else statement is: return imageOnCard[card.identifier] ?? chocolate cake
         // The above alternate code means: if the image on the card is set equal to nil, return imageOnCard[card.identifier] and if not, return chocolate cake image
-    }
+    
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
 // To do this effectively, we need to create an array (a collection) of all the cards
     
