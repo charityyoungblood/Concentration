@@ -32,6 +32,10 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     @IBOutlet var cardButtons: [UIButton]! // this is an array of UIButtons
     // We will need to look into the array above and locate which card has been touched
     
+    @IBAction func playAgainButton(_ sender: UIButton) {
+       // We only want to "show" the button when the game is over
+        sender.isHidden = true
+    }
     // **TODO: Make a "new game" button to start the game once all cards have been selected
     // **TODO: We only want to "show" the button when the game is over 
     
@@ -41,6 +45,10 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) { // this looks into the cardButtons array > "if" the optional (index?) is in the set state > cardNumber finds an index of the cardButtons array, it will run the code below
                 game.chooseCard(at: cardNumber)
+            if cardButtons.count == 2 {
+                playAgainButton(sender)
+                sender.isHidden = false
+            }
                 updateViewFromModel()
         }
         else {
@@ -127,8 +135,9 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
 //        let button = UIButton() // trying to change the button background color to teal upon loading
 //        changeBackgroundColor(on: button)
 //        // Do any additional setup after loading the view, typically from a nib.
+   
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
