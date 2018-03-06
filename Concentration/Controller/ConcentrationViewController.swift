@@ -59,7 +59,6 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
             }
             
             else {
-    
                 button.setImage(nil, for: UIControlState.normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.482870698, green: 0.6930291057, blue: 0.7390365005, alpha: 1)
             }
