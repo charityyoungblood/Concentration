@@ -76,7 +76,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // Everytime someone asks for the emoji on the card, we will check if the image for that card is currently "nil", then we will PUT an image into the Dictionary for that card
         // We will add the images "at random"
         if imageOnCard[card.identifier] == nil {
-            let randomIndex = arc4random_uniform(<#T##__upper_bound: UInt32##UInt32#>) // arc4random_uniform is a "random number generator" - will create a random number from 0 to the value you enter in the upper_bound 
+            let randomIndex = arc4random_uniform(UInt32(cardImageChoices.count)) // arc4random_uniform is a "random number generator" - will create a random number from 0 to the value you enter in the upper_bound
+                
         }
         return imageOnCard[card.identifier] ?? #imageLiteral(resourceName: "ChocolateCake")
         //if imageOnCard[card.identifier] != nil {
