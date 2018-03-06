@@ -130,9 +130,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-tq-of8">
-                                <rect key="frame" x="110" y="450" width="170" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7C-tq-of8">
+                                <rect key="frame" x="110" y="450" width="170" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,12 +140,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="TMK-B8-w31" firstAttribute="top" secondItem="c7C-tq-of8" secondAttribute="bottom" constant="204" id="6gJ-Tt-PCH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O4q-6p-gZa" secondAttribute="trailing" constant="16" id="94u-D9-uUT"/>
                             <constraint firstItem="O4q-6p-gZa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Cxh-Xd-NX2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TMK-B8-w31" secondAttribute="bottom" constant="33" id="Faf-8Q-MGV"/>
+                            <constraint firstItem="c7C-tq-of8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MBd-Mi-o4B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c7C-tq-of8" secondAttribute="trailing" constant="95" id="SLz-Hv-VAY"/>
                             <constraint firstItem="TMK-B8-w31" firstAttribute="top" secondItem="O4q-6p-gZa" secondAttribute="bottom" constant="8" symbolic="YES" id="npj-Mt-A7x"/>
+                            <constraint firstItem="c7C-tq-of8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="o0U-AH-eNf"/>
                             <constraint firstItem="O4q-6p-gZa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qea-f4-WcS"/>
                             <constraint firstItem="TMK-B8-w31" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xFZ-iz-ht0"/>
+                            <constraint firstItem="c7C-tq-of8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="406" id="ydq-pI-ANI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
