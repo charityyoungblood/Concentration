@@ -32,7 +32,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     @IBOutlet var cardButtons: [UIButton]! // this is an array of UIButtons
     // We will need to look into the array above and locate which card has been touched
     
-    // **TODO: Make a "new game" button to start the game once all cards have been selected 
+    // **TODO: Make a "new game" button to start the game once all cards have been selected
+    // **TODO: We only want to "show" the button when the game is over 
     
     @IBAction func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
@@ -86,13 +87,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
             imageOnCard[card.identifier] = cardImageChoices.remove(at: randomIndex)
         }
         return imageOnCard[card.identifier] ?? #imageLiteral(resourceName: "ChocolateCake")
-        //if imageOnCard[card.identifier] != nil {
-          //  return imageOnCard[card.identifier]!
-        // }
-        //else {
-          //  return #imageLiteral(resourceName: "ChocolateCake")
     }
-        // another way to write our if/else statement is: return imageOnCard[card.identifier] ?? chocolate cake
+        // another way to write an if/else statement is: return imageOnCard[card.identifier] ?? chocolate cake
         // The above alternate code means: if the image on the card is set equal to nil, return imageOnCard[card.identifier] and if not, return chocolate cake image
     
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **

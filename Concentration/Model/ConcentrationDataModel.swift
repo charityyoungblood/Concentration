@@ -53,24 +53,15 @@ class ConcentrationDataModel {
     init(numberOfPairsOfCards: Int) { // this is what we need to create our game - the number of pairs of cards will be fed to the ConcentrationDataModel
         for identifier in 1...numberOfPairsOfCards {
             let card = Card(identifier: identifier)
-            // generate a random index to place matching card
+            // generate a random index to place matching card somewhere other than next to original card
             let randomInsert = Int(arc4random_uniform(UInt32(cards.count)))
             let matchingCard = card
             cards.append(card) // here is where card images are added to the array - the original card image + the matching card image are being added so they are right next to each other
             cards.insert(matchingCard, at: randomInsert) // this makes it so the card is not placed right next to the matched card (shuffle)
             // instead of append you could use cards += [card, card]
         }
-        // **Shuffle the cards - DONE in line 58**
+        // **Shuffle the cards - DONE in line 57 and 60**
         }
-    
-//        func shuffle() {
-//            let cardCount = cards.count
-//            guard cardCount > 1 else { return }
-//
-//            for card in cards.indices {
-//
-//            }
-//            }
     
     }
 
