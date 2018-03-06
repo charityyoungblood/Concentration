@@ -72,15 +72,21 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     // A Dictionary is a way to store and retrieve information
     // ***WHEN ACCESSING VALUES FROM A DICTIONARY: Remember that what we are "looking up" in the Dictionary, MIGHT NOT be included in the Dictionary - this means the Dictionary call will return an Optional
     // In order to deal with the Optional in our func cardImage - we check to see "if" the imageOnCard does NOT equal nil, then we can unwrap the Optional
-    func cardImage(for card: Card) -> UIImage {
-        if imageOnCard[card.identifier] != nil {
-            return imageOnCard[card.identifier]!
+    func cardImage(for card: Card) -> UIImage {// How do we ADD items to our Dictionary? We will add these ON DEMAND
+        // Everytime someone asks for the emoji on the card, we will check if the image for that card is currently "nil", then we will PUT an image into the Dictionary for that card
+        // We will add the images "at random"
+        if imageOnCard[card.identifier] == nil {
+            let randomIndex = arc4random_uniform(<#T##__upper_bound: UInt32##UInt32#>) // arc4random_uniform is a "random number generator" - will create a random number from 0 to the value you enter in the upper_bound 
         }
-        else {
-        return #imageLiteral(resourceName: "ChocolateCake")
+        return imageOnCard[card.identifier] ?? #imageLiteral(resourceName: "ChocolateCake")
+        //if imageOnCard[card.identifier] != nil {
+          //  return imageOnCard[card.identifier]!
+        // }
+        //else {
+          //  return #imageLiteral(resourceName: "ChocolateCake")
     }
-        // another way to write our if/else statement is: return imageOnCard[card.identifier] ?? return chocolate cake
-        // The above alternate code means: if the image on the card is set equal to nil, return imageOnCard[card.identifier] and if not, return chocolate cake image 
+        // another way to write our if/else statement is: return imageOnCard[card.identifier] ?? chocolate cake
+        // The above alternate code means: if the image on the card is set equal to nil, return imageOnCard[card.identifier] and if not, return chocolate cake image
     }
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
 // To do this effectively, we need to create an array (a collection) of all the cards
