@@ -70,11 +70,18 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     var imageOnCard = Dictionary<Int, UIImage>() // this is the same syntax as var imageOnCard = [Int:UIImage]
     // we create this variable because we need to use a Dictionary to access our key:value pairs
     // A Dictionary is a way to store and retrieve information
-    
+    // ***WHEN ACCESSING VALUES FROM A DICTIONARY: Remember that what we are "looking up" in the Dictionary, MIGHT NOT be included in the Dictionary - this means the Dictionary call will return an Optional
+    // In order to deal with the Optional in our func cardImage - we check to see "if" the imageOnCard does NOT equal nil, then we can unwrap the Optional
     func cardImage(for card: Card) -> UIImage {
+        if imageOnCard[card.identifier] != nil {
+            return imageOnCard[card.identifier]!
+        }
+        else {
         return #imageLiteral(resourceName: "ChocolateCake")
     }
-    
+        // another way to write our if/else statement is: return imageOnCard[card.identifier] ?? return chocolate cake
+        // The above alternate code means: if the image on the card is set equal to nil, return imageOnCard[card.identifier] and if not, return chocolate cake image 
+    }
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
 // To do this effectively, we need to create an array (a collection) of all the cards
     
