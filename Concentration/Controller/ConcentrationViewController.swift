@@ -66,6 +66,8 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     }
     
     var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "CherryCake"), #imageLiteral(resourceName: "ChocolateCake"), #imageLiteral(resourceName: "WhiteCake"), #imageLiteral(resourceName: "GreenCake"), #imageLiteral(resourceName: "StrawberryShortcake"), #imageLiteral(resourceName: "FruitTart"), #imageLiteral(resourceName: "ApplePie"), #imageLiteral(resourceName: "Cupcake"), #imageLiteral(resourceName: "RedCake"), #imageLiteral(resourceName: "Truffles")] //need to change these to different images -- add in assets folder
+    // When we use one of the cardImageChoices in our cardImage function - we will remove it, so that there are not two identifiers that use the same image
+    // Once we use one of the images, we will remove it, so we don't use it again
     
     var imageOnCard = Dictionary<Int, UIImage>() // this is the same syntax as var imageOnCard = [Int:UIImage]
     // we create this variable because we need to use a Dictionary to access our key:value pairs
@@ -75,9 +77,11 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     func cardImage(for card: Card) -> UIImage {// How do we ADD items to our Dictionary? We will add these ON DEMAND
         // Everytime someone asks for the emoji on the card, we will check if the image for that card is currently "nil", then we will PUT an image into the Dictionary for that card
         // We will add the images "at random"
-        if imageOnCard[card.identifier] == nil {
-            let randomIndex = arc4random_uniform(UInt32(cardImageChoices.count)) // arc4random_uniform is a "random number generator" - will create a random number from 0 to the value you enter in the upper_bound
-                
+        if imageOnCard[card.identifier] == nil, cardImageChoices.count > 0  { // you can place two if statements next to each other, separated by a comma
+            let randomIndex = Int(arc4random_uniform(UInt32(cardImageChoices.count))) // arc4random_uniform is a "random number generator" - will create a random number from 0 to the value you enter in the upper_bound
+                // the "upper_bound" number has to be converted to a UInt32 "type" - which is why we surround the cardImageChoices.count with parenthese and UInt32
+            // the randomIndex type is Int - so we have to wrap everything to the right of the equal in () and convert to Int
+            imageOnCard[card.identifier] = cardImageChoices.remove(at: randomIndex)
         }
         return imageOnCard[card.identifier] ?? #imageLiteral(resourceName: "ChocolateCake")
         //if imageOnCard[card.identifier] != nil {
