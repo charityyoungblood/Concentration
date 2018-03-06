@@ -67,6 +67,10 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     
     var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "CherryCake"), #imageLiteral(resourceName: "ChocolateCake"), #imageLiteral(resourceName: "WhiteCake"), #imageLiteral(resourceName: "GreenCake"), #imageLiteral(resourceName: "StrawberryShortcake"), #imageLiteral(resourceName: "FruitTart"), #imageLiteral(resourceName: "ApplePie"), #imageLiteral(resourceName: "Cupcake"), #imageLiteral(resourceName: "RedCake"), #imageLiteral(resourceName: "Truffles")] //need to change these to different images -- add in assets folder
     
+    var imageOnCard = Dictionary<Int, UIImage>() // this is the same syntax as var imageOnCard = [Int:UIImage]
+    // we create this variable because we need to use a Dictionary to access our key:value pairs
+    // A Dictionary is a way to store and retrieve information
+    
     func cardImage(for card: Card) -> UIImage {
         return #imageLiteral(resourceName: "ChocolateCake")
     }
