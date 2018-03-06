@@ -65,10 +65,10 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         }
     }
     
-    var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone"), #imageLiteral(resourceName: "Microphone")] //need to change these to different images -- add in assets folder
+    var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "CherryCake"), #imageLiteral(resourceName: "ChocolateCake"), #imageLiteral(resourceName: "WhiteCake"), #imageLiteral(resourceName: "GreenCake"), #imageLiteral(resourceName: "StrawberryShortcake"), #imageLiteral(resourceName: "FruitTart"), #imageLiteral(resourceName: "ApplePie"), #imageLiteral(resourceName: "Cupcake"), #imageLiteral(resourceName: "RedCake"), #imageLiteral(resourceName: "Truffles")] //need to change these to different images -- add in assets folder
     
     func cardImage(for card: Card) -> UIImage {
-        return #imageLiteral(resourceName: "Microphone")
+        return #imageLiteral(resourceName: "ChocolateCake")
     }
     
 // **Our code won't be DRY if we have to of the EXACT SAME METHODS - so we delete the method for second card and create a method that all of our cards get called on **
