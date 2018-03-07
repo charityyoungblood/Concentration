@@ -28,16 +28,20 @@ class ConcentrationDataModel {
                     if foundIndex == nil{ //if foundIndex is nil
                         foundIndex = index
                     }
-                    else {
-                        
+                    else {// this else statement would be for the "second" face up card you find
+                        return nil //we return "nil" because if there are TWO face up cards, then the indexOfOneAndOnlyFaceUpCard is "nil"
                     }
+                    
+                    return foundIndex // this will EITHER be set to the ONE card we found in the for loop, or it will be "nil" from the declaration of foundIndex - as Optionals ALWAYS get set to "nil" or "not set" initially
                 }
             }
-        }
         
         set(newValue) { // newValue is a "internal" XCode local variable - that contains the "new value" someone "set" indexOfOneAndOnlyFaceUpCard to
             // usually we don't include an argument for set - if you DON'T put an argument, it will "default" to "newValue"
-            
+            // For the "set" case, we will go through all of the cards and turn them ALL face down -- EXCEPT -- for indexOfOneAndOnlyFaceUpCard
+            for index in cards.indices {
+                cards[index].isFaceUp = (index) // cards[index].isFaceUp is "false" for most cards - in the case of 
+            }
         }
     }
     
