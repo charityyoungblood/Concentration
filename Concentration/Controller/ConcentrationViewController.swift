@@ -14,7 +14,18 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     // To keep track of the amount of times each card has been flipped over, we wil create an instance variable to track
     // ***REMEMBER: ALL variables and properties have to be INITIALIZED in Swift, i.e. it has to be assigned to some value***
     
-    lazy var game = ConcentrationDataModel(numberOfPairsOfCards: (cardButtons.count + 1) / 2) // this is an instance variable of the ConcentrationDataModel class
+    lazy var game = ConcentrationDataModel(numberOfPairsOfCards: numberOfPairsOfCards) // this is an instance variable of the ConcentrationDataModel class
+    
+    var numberOfPairsOfCards: Int {
+        get {
+            return (cardButtons.count + 1 ) / 2
+        }
+    }
+    
+    // **IMPORTANT** Changing a stored property to a "Computed Property"
+        // When we have a simple calculation, like numberOfPairsOfCard: (cardButtons.count + 1) / 2) - this is for the number of pairs of cards, which is "calculated" from the card buttons (specifically the cardButtons array)
+        // There MAY BE other times, THROUGHOUT OUR PROGRAM, where we want to know HOW MANY pairs of cards there are
+        // This would be considered a "PROPERTY" - and it's derived from the above data, so we can set numberOfPairsOfCards to be a "COMPUTED PROPERTY"
     
     // When we create our Concentration game, we have to say how many cards there are
     
