@@ -17,7 +17,20 @@ class ConcentrationDataModel {
     
     var cards = [Card]() // we have to define Card - to do this we need to create a struct
     
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    // **IMPORTANT** For Computed Property Below:
+        // We will create a "set" and a "get" for indexOfOneAndOnlyFaceUpCard
+        //
+    var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            
+        }
+        
+        set(newValue) { // newValue is a "internal" XCode local variable - that contains the "new value" someone "set" indexOfOneAndOnlyFaceUpCard to
+            // usually we don't include an argument for set - if you DON'T put an argument, it will "default" to "newValue" 
+            
+        }
+    }
+    
     
     // for our chooseCard function - there are three cases we need to look at
     // No cards are face up - if no cards are face up, when I choose a card, it will flip that card over

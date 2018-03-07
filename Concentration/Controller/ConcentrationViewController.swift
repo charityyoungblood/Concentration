@@ -16,19 +16,15 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     
     lazy var game = ConcentrationDataModel(numberOfPairsOfCards: numberOfPairsOfCards) // this is an instance variable of the ConcentrationDataModel class
     
-    var numberOfPairsOfCards: Int {
+    var numberOfPairsOfCards: Int { // this is a "read-only" computed property; does NOT have a "set" 
         get {
             return (cardButtons.count + 1 ) / 2
         }
     }
-    
-    // **IMPORTANT** Changing a stored property to a "Computed Property"
+    // **IMPORTANT** Changing a stored property to a "Computed Property" >> EX: var numberOfPairsOfCards
         // When we have a simple calculation, like numberOfPairsOfCard: (cardButtons.count + 1) / 2) - this is for the number of pairs of cards, which is "calculated" from the card buttons (specifically the cardButtons array)
         // There MAY BE other times, THROUGHOUT OUR PROGRAM, where we want to know HOW MANY pairs of cards there are
         // This would be considered a "PROPERTY" - and it's derived from the above data, so we can set numberOfPairsOfCards to be a "COMPUTED PROPERTY"
-    
-    // When we create our Concentration game, we have to say how many cards there are
-    
     
     var flipCount = 0 {
         didSet {
