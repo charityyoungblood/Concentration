@@ -21,12 +21,22 @@ class ConcentrationDataModel {
         // We will create a "set" and a "get" for indexOfOneAndOnlyFaceUpCard
         //
     var indexOfOneAndOnlyFaceUpCard: Int? {
-        get {
-            
+        get {// here, we want to GET the index value of indexOfOneAndOnlyFaceUpCard
+            var foundIndex: Int? // We create a variable to hold/store the value of the located index - we will look through all the face cards and see if we can FIND one and this variable will hold the one we found
+            for index in cards.indices {// We create a "for" loop and go through all of the cards indices - we will look at each card then we will set foundIndex to the index of the located, "face up" card
+                if cards[index].isFaceUp {//if that card is face up
+                    if foundIndex == nil{ //if foundIndex is nil
+                        foundIndex = index
+                    }
+                    else {
+                        
+                    }
+                }
+            }
         }
         
         set(newValue) { // newValue is a "internal" XCode local variable - that contains the "new value" someone "set" indexOfOneAndOnlyFaceUpCard to
-            // usually we don't include an argument for set - if you DON'T put an argument, it will "default" to "newValue" 
+            // usually we don't include an argument for set - if you DON'T put an argument, it will "default" to "newValue"
             
         }
     }
