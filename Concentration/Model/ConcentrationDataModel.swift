@@ -31,20 +31,20 @@ class ConcentrationDataModel {
                     else {// this else statement would be for the "second" face up card you find
                         return nil //we return "nil" because if there are TWO face up cards, then the indexOfOneAndOnlyFaceUpCard is "nil"
                     }
-                    
-                    return foundIndex // this will EITHER be set to the ONE card we found in the for loop, or it will be "nil" from the declaration of foundIndex - as Optionals ALWAYS get set to "nil" or "not set" initially
                 }
+                
+            }
+                    return foundIndex // this will EITHER be set to the ONE card we found in the for loop, or it will be "nil" from the declaration of foundIndex - as Optionals ALWAYS get set to "nil" or "not set" initially
             }
         
         set(newValue) { // newValue is a "internal" XCode local variable - that contains the "new value" someone "set" indexOfOneAndOnlyFaceUpCard to
             // usually we don't include an argument for set - if you DON'T put an argument, it will "default" to "newValue"
             // For the "set" case, we will go through all of the cards and turn them ALL face down -- EXCEPT -- for indexOfOneAndOnlyFaceUpCard
-            for index in cards.indices {
-                cards[index].isFaceUp = (index) // cards[index].isFaceUp is "false" for most cards - in the case of 
+            for index in cards.indices {// We will iterate through the card indices
+                cards[index].isFaceUp = (index == newValue) // cards[index].isFaceUp is "false" for most cards - BUT in case the index in the cards.indices is EQUAL to the indexOfOneAndOnlyFaceUpCard, remember this is the local variable (newValue - the value that is passed through the indexOfOneAndOnlyFaceUpCard computed property, then we will set the cards[index].isFaceUp expression to "TRUE" by comparing the value of index to newValue
             }
         }
     }
-    
     
     // for our chooseCard function - there are three cases we need to look at
     // No cards are face up - if no cards are face up, when I choose a card, it will flip that card over
@@ -62,9 +62,10 @@ class ConcentrationDataModel {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
+                indexOfOneAndOnlyFaceUpCard = nil // Since we have changed indexOfOneAndOnlyFaceUpCard to a "computed property" we NO LONGER need to set indexOfOneAndOnlyFaceUpCard to "nil" - this is the case where we found two cards, that we are trying to "match", since there are  TWO cards, we had to ORIGINALLY set the indexOfOneAndOnlyFaceUpCard to "nil" as after the above operation for matchIndex runs, we would have MORE THAN one card face up
+                // Now, EVERY TIME we ask for the value of indexOfOneAndOnlyFaceUpCard, it will be "COMPUTED" so we will not need to "set" the value MANUALLY
             }
-                
+         // In the "else" statement below, we are 
             else {
                 // either no cards or 2 cards are face up
                 for flipDownIndex in cards.indices { // cards.indices is a Countable range of all indexes in your cards array
