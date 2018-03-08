@@ -14,7 +14,14 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     // To keep track of the amount of times each card has been flipped over, we wil create an instance variable to track
     // ***REMEMBER: ALL variables and properties have to be INITIALIZED in Swift, i.e. it has to be assigned to some value***
     
-    lazy var game = ConcentrationDataModel(numberOfPairsOfCards: numberOfPairsOfCards) // this is an instance variable of the ConcentrationDataModel class
+    // **MAKE: Should we make lazy var game (an instance of the ConcentrationDataModel - private? **
+        // this will depend on WHAT your model is and HOW it works - OFTEN ViewController's models are NOT PRIVATE
+        // This is because you GIVE a MODEL to a VIEW CONTROLLER and it DISPLAYS what you have GIVEN -
+        // In this case, since the numberOfPairsOfCards is INTIMATELY TIED to the UI - via cardButtons - so we'll keep lazy var game "private" 
+    
+    private lazy var game = ConcentrationDataModel(numberOfPairsOfCards: numberOfPairsOfCards) // this is an instance variable of the ConcentrationDataModel class
+    
+    // Since var numberOfPairsOfCards is a "read-only" computed property, we DO NOT need to make this "private" under Access Control
     
     var numberOfPairsOfCards: Int { // this is a "read-only" computed property; does NOT have a "set" 
         get {
