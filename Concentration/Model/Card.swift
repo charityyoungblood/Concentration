@@ -8,16 +8,22 @@
 
 import Foundation
 
+// **MARK: (For Access Control) Should we make our struct Card or it's vars "private"?
 struct Card {
-    var isFaceUp = false
-    var isMatched = false
-    var identifier: Int // this is a unique identifier to identify the cards
+    var isFaceUp = false // We need to know if a card is "face up", so we will NOT set this to "private"
+    var isMatched = false // We need to know if a card is "face down", so we will NOT set this to "private"
+    var identifier: Int // We need to know if the identifier of a card, so we will NOT set this to "private"
+    // this is a unique identifier to identify the cards
   // we want to create a "unique identifier" in the struct Card
     
+    // **MARK: (For Access Control) Should we make our static var identifierFactory "private"?
+        // YES, as this is internal implementation
     static var identifierFactory = 0
     
-    // static func means you can't send it to the "class" or "struct" directly - only to the data type itself
+    // **MARK: (For Access Control) Should we make our static func getUniqueIdentifier "private"?
+        // YES, as this is internal implementation
     
+    // static func means you can't send it to the "class" or "struct" directly - only to the data type itself
     static func getUniqueIdentifier() -> Int { // this function returns an Int that is unique, i.e. changes every time it is called
         Card.identifierFactory += 1
         return Card.identifierFactory

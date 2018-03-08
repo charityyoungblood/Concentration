@@ -15,12 +15,19 @@ class ConcentrationDataModel {
     // - cards
     // - images
     
-    var cards = [Card]() // we have to define Card - to do this we need to create a struct
+ // **MARK: (For Access Control) Should we var cards (an instance of the Card struct) private? **
+    // Cards HAS to be public, because if it is PRIVATE, the UI would NOT be able to DISPLAY the cards - BUT cards flipping up and down, and matching IS internal
+    // We CAN allow people to ACCESS the cards value, but we DO NOT want them to modify anything
+    // In this case, we set the variable to "private(set)"
+    private(set) var cards = [Card]() // we have to define Card - to do this we need to create a struct
     
+ // **MARK: (For Access Control) Should we var indexOfOneAndOnlyFaceUpCard private? **
+    // We do NOT want people having access to this variable, as this is an internal implementation - we set this value, so we will set to private
+
     // **IMPORTANT** For Computed Property Below:
         // We will create a "set" and a "get" for indexOfOneAndOnlyFaceUpCard
         //
-    var indexOfOneAndOnlyFaceUpCard: Int? {
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {// here, we want to GET the index value of indexOfOneAndOnlyFaceUpCard
             var foundIndex: Int? // We create a variable to hold/store the value of the located index - we will look through all the face cards and see if we can FIND one and this variable will hold the one we found
             for index in cards.indices {// We create a "for" loop and go through all of the cards indices - we will look at each card then we will set foundIndex to the index of the located, "face up" card
@@ -52,6 +59,10 @@ class ConcentrationDataModel {
     // One card face up - then I choose another card, I need to see if that card matches the other card
     
     // We'll need to keep track of when there is ONLY ONE card face up - as we will need to check it, and see if it matches the other card
+    
+// **MARK: (For Access Control) Should we make var chooseCard private? **
+    // No, as this method is needed to play the game
+    
     func chooseCard(at index: Int) {
         // first - we will ignore a card that has already been matched
         if !cards[index].isMatched {
