@@ -14,14 +14,16 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
     // To keep track of the amount of times each card has been flipped over, we wil create an instance variable to track
     // ***REMEMBER: ALL variables and properties have to be INITIALIZED in Swift, i.e. it has to be assigned to some value***
     
-    // **MAKE: Should we make lazy var game (an instance of the ConcentrationDataModel - private? **
-        // this will depend on WHAT your model is and HOW it works - OFTEN ViewController's models are NOT PRIVATE
+    // **MARK: (For Access Control) Should we make lazy var game (an instance of the ConcentrationDataModel - private? **
+        // this will depend on WHAT your model is and HOW it works - OFTEN, ViewController's models are NOT PRIVATE
         // This is because you GIVE a MODEL to a VIEW CONTROLLER and it DISPLAYS what you have GIVEN -
-        // In this case, since the numberOfPairsOfCards is INTIMATELY TIED to the UI - via cardButtons - so we'll keep lazy var game "private" 
+        // In this case, since the numberOfPairsOfCards is INTIMATELY TIED to the UI - via cardButtons - so we'll keep lazy var game "private"
     
     private lazy var game = ConcentrationDataModel(numberOfPairsOfCards: numberOfPairsOfCards) // this is an instance variable of the ConcentrationDataModel class
     
-    // Since var numberOfPairsOfCards is a "read-only" computed property, we DO NOT need to make this "private" under Access Control
+    // **MARK: (For Access Control) Should we make var numberOfPairsOfCards "private"?
+        // It is Ok to ASK or GET what the numberOfPairsOfCards is, but we DO NOT want someone else to SET this value
+        // Since var numberOfPairsOfCards is a "read-only" computed property, we DO NOT need to add the "private" keyword
     
     var numberOfPairsOfCards: Int { // this is a "read-only" computed property; does NOT have a "set" 
         get {
@@ -33,27 +35,29 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         // There MAY BE other times, THROUGHOUT OUR PROGRAM, where we want to know HOW MANY pairs of cards there are
         // This would be considered a "PROPERTY" - and it's derived from the above data, so we can set numberOfPairsOfCards to be a "COMPUTED PROPERTY"
     
-    var flipCount = 0 {
+// **MARK: (For Access Control) Should we make var flipCount "private"?
+    // It is Ok to ASK or GET the value of flipCount, but we DO NOT want someone else to SET this value, as this is something we do INTERNALLY when the cards are flipped
+    
+   private(set) var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
+    // **MARK: (For Access Control) Should we make our IBAction and IBOutlet func and vars "private"?
+        // ALMOST ALWAYS we keep our IBOutlet and IBAction PRIVATE, since these are all "internal implementation" of how we implement our UI
+    @IBOutlet weak private var flipCountLabel: UILabel! // to show the user the flipCount - we have to add it to our UI with a text field or a label
     
-    // to show the user the flipCount - we have to add it to our UI with a text field or a label
-
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]! // this is an array of UIButtons - We will need to iterate over array and locate which card has been touched
     
-    @IBOutlet var cardButtons: [UIButton]! // this is an array of UIButtons
-    // We will need to look into the array above and locate which card has been touched
-    
-    @IBAction func playAgainButton(_ sender: UIButton) {
+    @IBAction private func playAgainButton(_ sender: UIButton) {
        // We only want to "show" the button when the game is over
         sender.isHidden = true
     }
+    
     // **TODO: Make a "new game" button to start the game once all cards have been selected
     // **TODO: We only want to "show" the button when the game is over 
     
-    @IBAction func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
+    @IBAction private func touchCard(_ sender: UIButton) { // in Swift, ever argument/parameter has a name in front of the data type that you include when you call the method
         // this actually equates to two names: an internal name - the name we use inside of the implementation (inside the curly braces)
         // external name: the name callers use
         flipCount += 1
@@ -67,7 +71,10 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         //flipCard(buttonImage: UIImage(named: "Microphone.png")!, on: sender)
     }
     
-    func updateViewFromModel() {// this function will look at all of our cards in the cards variable (from ConcentrationDataModel) and make sure all of our cardButtons match
+    // **MARK: (For Access Control) Should we make func updateViewFromModel "private"?
+        // Since updateViewFromModel is internal implementation, we set it to private
+    
+    private func updateViewFromModel() {// this function will look at all of our cards in the cards variable (from ConcentrationDataModel) and make sure all of our cardButtons match
     // this function needs to look up the "index" value IN the card array so we can tell which card it is
         
         // When we invoke the function of chooseCard - the game wil change - in this case, we'll need to update our View from the model 
