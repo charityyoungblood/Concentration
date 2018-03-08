@@ -93,16 +93,26 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         }
     }
     
-    var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "CherryCake"), #imageLiteral(resourceName: "ChocolateCake"), #imageLiteral(resourceName: "WhiteCake"), #imageLiteral(resourceName: "GreenCake"), #imageLiteral(resourceName: "StrawberryShortcake"), #imageLiteral(resourceName: "FruitTart"), #imageLiteral(resourceName: "ApplePie"), #imageLiteral(resourceName: "Cupcake"), #imageLiteral(resourceName: "RedCake"), #imageLiteral(resourceName: "Truffles")] //need to change these to different images -- add in assets folder
+// **MARK: (For Access Control) Should we make our var cardImageChoices "private"?
+    // YES, it is implemented in our UI and we consume it, we will set it to private
+    
+   private var cardImageChoices: [UIImage] = [#imageLiteral(resourceName: "CherryCake"), #imageLiteral(resourceName: "ChocolateCake"), #imageLiteral(resourceName: "WhiteCake"), #imageLiteral(resourceName: "GreenCake"), #imageLiteral(resourceName: "StrawberryShortcake"), #imageLiteral(resourceName: "FruitTart"), #imageLiteral(resourceName: "ApplePie"), #imageLiteral(resourceName: "Cupcake"), #imageLiteral(resourceName: "RedCake"), #imageLiteral(resourceName: "Truffles")] //need to change these to different images -- add in assets folder
     // When we use one of the cardImageChoices in our cardImage function - we will remove it, so that there are not two identifiers that use the same image
     // Once we use one of the images, we will remove it, so we don't use it again
     
-    var imageOnCard = Dictionary<Int, UIImage>() // this is the same syntax as var imageOnCard = [Int:UIImage]
+    // **MARK: (For Access Control) Should we make our var imageOnCard "private"?
+        // Since we are CREATING the dictionary on the fly, we wouldn't want anyone messing with this variable, so we set it to "private"
+    
+   private var imageOnCard = Dictionary<Int, UIImage>() // this is the same syntax as var imageOnCard = [Int:UIImage]
     // we create this variable because we need to use a Dictionary to access our key:value pairs
     // A Dictionary is a way to store and retrieve information
     // ***WHEN ACCESSING VALUES FROM A DICTIONARY: Remember that what we are "looking up" in the Dictionary, MIGHT NOT be included in the Dictionary - this means the Dictionary call will return an Optional
+    
+    // **MARK: (For Access Control) Should we make our var cardImage "private"?
+        // YES
+    
     // In order to deal with the Optional in our func cardImage - we check to see "if" the imageOnCard does NOT equal nil, then we can unwrap the Optional
-    func cardImage(for card: Card) -> UIImage {// How do we ADD items to our Dictionary? We will add these ON DEMAND
+    private func cardImage(for card: Card) -> UIImage {// How do we ADD items to our Dictionary? We will add these ON DEMAND
         // Everytime someone asks for the emoji on the card, we will check if the image for that card is currently "nil", then we will PUT an image into the Dictionary for that card
         // We will add the images "at random"
         if imageOnCard[card.identifier] == nil, cardImageChoices.count > 0  { // you can place two if statements next to each other, separated by a comma
