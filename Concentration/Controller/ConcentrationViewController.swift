@@ -52,10 +52,6 @@ class ConcentrationViewController: UIViewController { //UIViewController is the 
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) { // this looks into the cardButtons array > "if" the optional (index?) is in the set state > cardNumber finds an index of the cardButtons array, it will run the code below
                 game.chooseCard(at: cardNumber)
-            if cardButtons.count == 2 {
-                playAgainButton(sender)
-                sender.isHidden = false
-            }
                 updateViewFromModel()
         }
         else {

@@ -37,7 +37,7 @@ class ConcentrationDataModel {
                     return foundIndex // this will EITHER be set to the ONE card we found in the for loop, or it will be "nil" from the declaration of foundIndex - as Optionals ALWAYS get set to "nil" or "not set" initially
             }
         
-        set(newValue) { // newValue is a "internal" XCode local variable - that contains the "new value" someone "set" indexOfOneAndOnlyFaceUpCard to
+        set { // newValue is a "internal" XCode local variable - that contains the "new value" someone "set" indexOfOneAndOnlyFaceUpCard to
             // usually we don't include an argument for set - if you DON'T put an argument, it will "default" to "newValue"
             // For the "set" case, we will go through all of the cards and turn them ALL face down -- EXCEPT -- for indexOfOneAndOnlyFaceUpCard
             for index in cards.indices {// We will iterate through the card indices
@@ -62,18 +62,13 @@ class ConcentrationDataModel {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil // Since we have changed indexOfOneAndOnlyFaceUpCard to a "computed property" we NO LONGER need to set indexOfOneAndOnlyFaceUpCard to "nil" - this is the case where we found two cards, that we are trying to "match", since there are  TWO cards, we had to ORIGINALLY set the indexOfOneAndOnlyFaceUpCard to "nil" as after the above operation for matchIndex runs, we would have MORE THAN one card face up
+               // Since we have changed indexOfOneAndOnlyFaceUpCard to a "computed property" we NO LONGER need to set indexOfOneAndOnlyFaceUpCard to "nil" - this is the case where we found two cards, that we are trying to "match", since there are  TWO cards, we had to ORIGINALLY set the indexOfOneAndOnlyFaceUpCard to "nil" as after the above operation for matchIndex runs, we would have MORE THAN one card face up
                 // Now, EVERY TIME we ask for the value of indexOfOneAndOnlyFaceUpCard, it will be "COMPUTED" so we will not need to "set" the value MANUALLY
             }
-         // In the "else" statement below, we are 
+         // In the "else" statement below, we are "setting" the index of indexOfOneAndOnlyFaceUpCard to be the "index" - i.e. the value of the argument passed into the chooseCard function
+        // As this was the case for when there were ALREADY two cards face up  - since we "set" indexOfOneAndOnlyFaceUpCard in the computed property, we DO NOT need to flip down the cards or check which cards are face up
             else {
-                // either no cards or 2 cards are face up
-                for flipDownIndex in cards.indices { // cards.indices is a Countable range of all indexes in your cards array
-                    cards[flipDownIndex].isFaceUp = false // this turns all cards face down in your cards array indexes
-                }
-                cards[index].isFaceUp = true // since you chose a card, we will turn THAT card "face up"
-                indexOfOneAndOnlyFaceUpCard = index // the only card that is face up is the one you chose, i.e. index 
-                
+                indexOfOneAndOnlyFaceUpCard = index // the only card that is face up is the one you chose, i.e. index
             }
         }
     }
